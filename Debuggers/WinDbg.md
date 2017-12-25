@@ -29,10 +29,22 @@
 More cases can be found under the "Magic debug values" section on: https://en.wikipedia.org/wiki/Magic_number_(programming).
 
 ## Address Ranges
+There is a whole page dedicated to this topic here: https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/address-and-address-range-syntax. However, i tend to rely one:
+* Explicit: u [first_address] [last_address]-> disassembles whatever is between the aforementioned addresses.
+* Implicit: dd [address] L[number_of_units]-> prints number_of_units dwords starting at address. If i used db, you would get the same number of units but bytes, not words (dd understands dwords while db understands bytes).
 
 ## Evaluating Expressions
-?: evaluate expression (e.g. ? $thread gives the address of TEB (user mode)/ETHREAD (kernel mode))
+WinDbg is capable of interpreting expressions as well as interpreting data in memory as C++ objects:
+* https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/---evaluate-expression-
+* https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/----evaluate-c---expression-
+* https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/evaluating-expressions
 
+Some examples:
+* ? eip: prints eip
+* ? poi(esp): prints a dword from the top of the stack
+* ?? @@c++(sizeof(0x0)): prints size of data. In this case, it is an integer with four bytes.
+
+? means evaluate expression while ?? @@c++ means evaluate C++ expression. It is possible to evaluate MASM expressions as well. 
 
 # Commands
 
