@@ -13,7 +13,19 @@
 
 ## Memory Interpretation
 * When a memory dump displays question marks, the address is not accessible since the memory is not mapped on the address or belongs to kernel.
-*< dead beef
+* Memory is typically initialised with standard values:
+  * 0xABABABAB : Used by Microsoft's HeapAlloc() to mark "no man's land" guard bytes after allocated heap memory
+  * 0xABADCAFE : A startup to this value to initialize all free memory to catch errant pointers
+  * 0xBAADF00D : Used by Microsoft's LocalAlloc(LMEM_FIXED) to mark uninitialised allocated heap memory
+  * 0xBADCAB1E : Error Code returned to the Microsoft eVC debugger when connection is severed to the debugger
+  * 0xBEEFCACE : Used by Microsoft .NET as a magic number in resource files
+  * 0xCCCCCCCC : Used by Microsoft's C++ debugging runtime library to mark uninitialised stack memory
+  * 0xCDCDCDCD : Used by Microsoft's C++ debugging runtime library to mark uninitialised heap memory
+  * 0xDDDDDDDD : Used by Microsoft's C++ debugging heap to mark freed heap memory
+  * 0xDEADDEAD : A Microsoft Windows STOP Error code used when the user manually initiates the crash.
+  * 0xFDFDFDFD : Used by Microsoft's C++ debugging heap to mark "no man's land" guard bytes before and after allocated heap memory
+  * 0xFEEEFEEE : Used by Microsoft's HeapFree() to mark freed heap memory
+More cases can be found on "Magic debug values" on: https://en.wikipedia.org/wiki/Magic_number_(programming)
 
 ## Address ranges
 
@@ -113,15 +125,3 @@ Threads can be identified as such:
 * !exchain: prints current exception chain.
 * !slist, !list: list iteration.
 
-
-
-Questions?
--Investigate meaning of !address fields-
--bp ?(0x00c30000 + 0xCC45) ? why won't this work
--SEH (Adv Wind De pag 191): what is 0xFFFFFFFE and CT?
--Freeze/Unfreeze thread? are they suspended? how does the debugger manage that?
-
-URLS:
-https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/reading-and-writing-memory
-https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/thread-syntax
-https://stackoverflow.com/questions/127386/in-visual-studio-c-what-are-the-memory-allocation-representations (find list for these)
