@@ -25,6 +25,7 @@
   * 0xDEADDEAD : A Microsoft Windows STOP Error code used when the user manually initiates the crash.
   * 0xFDFDFDFD : Used by Microsoft's C++ debugging heap to mark "no man's land" guard bytes before and after allocated heap memory
   * 0xFEEEFEEE : Used by Microsoft's HeapFree() to mark freed heap memory
+
 More cases can be found on "Magic debug values" on: https://en.wikipedia.org/wiki/Magic_number_(programming)
 
 ## Address ranges
