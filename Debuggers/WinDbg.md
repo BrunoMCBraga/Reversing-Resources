@@ -54,9 +54,9 @@ Some examples:
 
 ## Getting Addresses for Relevant Structures
 * ? $peb: prints address of PEB
-* !peb: show PEB
+* !peb: shows PEB
 * ? $teb: same for TEB
-* !teb: show TEB
+* !teb: shows TEB
 * ? $proc: same for _EPROCESS
 
 
