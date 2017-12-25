@@ -14,15 +14,22 @@
 ## Address ranges
 
 ## Evaluating Expressions
-?
+
 
 # Commands
 
+## Getting addresses for relevant structures
+* ? $peb: prints address of PEB
+* ? $teb: same for TEB
+* ? $proc: same for _EPROCESS
+
 ## Reckon
 * lm: list modules
-* x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as \**word*\* The modules can be found using lm.  
+* x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as \**word*\*. The modules can be found using lm.  
 * ln [address] (list near): lists symbols at or close to the address.  
 * dg [fs/gs/ds]: shows information about segment selectors
+* dt [module_name]![type] [address] (display type): Can be used to overlap an address with a known structure (e.g. dt nt!_EPROCESS @$proc (using .process). This will align the _EPROCESS struct with the @$proc address).
+
 
 ## Memory Reading/Manipulation
 * dds/dps/dqs [address_range]: display words and symbols referenced within the provided address_range.
@@ -35,14 +42,11 @@ u(b) [address/address_range]: disassembles a couple of instructions starting at 
 u [start_address] [end_address]: disassembles instructions between the provided addresses
 uf [address/address_range]: disassembly function. It parses the assembly and adds clickable links when you have branches. 
 
+## Stack
+k (and variants) : displays stack backtrace. The stack trace includes the base pointer for the stack frame (i.e. ebp for each function), the return address, and function names.
 
-u (8-bytes after eip)/uf (function)/ub (8-bytes before eip): unassembly. 
 
-k : displays stack backtrace. k = BasePtr StackPtr InstructionPtr can be used to reconstruct a stackframe.
-ChildEBP (BasePtr) = EBP for function
-RetAddr (InstructionPtr) = address of next instruction executed when function returns
-StackPtr = Stack Pointer
-dt : display type. Can be used to overlap an address with a known structure: dt nt!_EPROCESS @$proc (using .process). This will align the _EPROCESS struct with the @$proc address.
+
 dv : display local variables. Useful when there are symbols.
 g <address>/t (jumps into function)/gu/pc/p/wt (similar to t but does not go into function)/t : run/trace(single step)/runs to the end offunction /pc runs until next call function/step over/ trace with watch
 s : search memory
@@ -94,3 +98,4 @@ Questions?
 URLS:
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/reading-and-writing-memory
 https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/thread-syntax
+https://stackoverflow.com/questions/127386/in-visual-studio-c-what-are-the-memory-allocation-representations (find list for these)
