@@ -1,27 +1,43 @@
 # General Notes
 
 ## Types of commands
-..*Session commands : e.g. kb
-..*Meta commands: e.g. .load
-..*Extension commands: !analyze, !dumpheap
 
-Prompt meaning:
-0:000> means target zero and thread zero (main).
-kd> kernel debugging
+* Session commands : e.g. kb
+* Meta commands: e.g. .load
+* Extension commands: !analyze, !dumpheap
 
-Break instruction information:1.Exception code address (kernel code)
-							  2.Code and address for last executed instrution (application).
+## Prompt meaning
+
+* 0:000> means target zero and thread zero (main).
+* kd> kernel debugging
+
+## Address ranges
+
+## Evaluating Expressions
+?
+
+# Commands
+
+## Reckon
+* lm: list modules
+* x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as **whatever** The modules can be found using lm.  
+* ln [address] (list near): lists symbols at or close to the address.  
+* dg [fs/gs/ds]: shows information about segment selectors
+
+## Memory Reading/Manipulation
+* dds/dps/dqs [address_range]: display words and symbols referenced within the provided address_range.
+* d/da/db... [address_range] : displays memory content within range. Typical usage: da (ascii strings), du (unicode strings) 
+* dda/ddp/ddu [address_range]: symilar to the previous one but it will expect the memory to have a pointer to data. The pointer will be displayed and so will be the data.
+* ? poi([address]): roughly speaking, reads a pointer from the address. Say you know a given address contains a pointer to something. You could use dd or simply this. This could be useful to combine with another command like *u* (e.g. u poi(address)). *NOTE:the address does not have to have a pointer there. It can be anything* 
+
+## Assembly
+u(b) [address/address_range]: disassembles a couple of instructions starting at the providded address. The b dictates that it should start disassembling back instead of forth.
+u [start_address] [end_address]: disassembles instructions between the provided addresses
+uf [address/address_range]: disassembly function. It parses the assembly and adds clickable links when you have branches. 
 
 
-Session commands:
-lm: list modules
-x: examine symbols
-ln: list near
-dg: shows information about segments
 u (8-bytes after eip)/uf (function)/ub (8-bytes before eip): unassembly. 
-dds/dps/dqs : display words and symbols. Useful to check address agains symbol table
-dda, ddp, ddu... : takes a pointer and checks what is pointed by it (e.g. string).
-d : display memory. Register names can be used (e.g. dc esp)
+
 k : displays stack backtrace. k = BasePtr StackPtr InstructionPtr can be used to reconstruct a stackframe.
 ChildEBP (BasePtr) = EBP for function
 RetAddr (InstructionPtr) = address of next instruction executed when function returns
