@@ -136,5 +136,5 @@ Threads can be identified as such:
 * !exchain: prints current exception chain.
 * !slist, !list: list iteration.
 
-#Resources
-http://windbg.info/doc/1-common-cmds.html#14_tracing
+# Resources
+* http://windbg.info/doc/1-common-cmds.html#14_tracing
