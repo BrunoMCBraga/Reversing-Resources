@@ -125,7 +125,7 @@ Threads can be identified as such:
 
 ## Configuring Symbols:
 1. On WinDbg go to File->Symbol File Path...
-2. Paste srv*c:\MyServerSymbols*https://msdl.microsoft.com/download/symbols. The \*c:\MyServerSymbols\* represents the path were the downloaded symbols will be saved.
+2. Paste srv*c:\MyServerSymbols\*https://msdl.microsoft.com/download/symbols. The \*c:\MyServerSymbols\* represents the path were the downloaded symbols will be saved.
 3. Use the extension command \*.reload -f\* to force all the symbols to be loaded. If the binary dynamically loads dlls later and if you suspect the symbols are not being identified, use the command again.
 
 ## Misc
