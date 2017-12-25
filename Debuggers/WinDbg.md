@@ -8,8 +8,8 @@
 
 ## Prompt meaning
 
-* 0:000> means target zero and thread zero (main).
-* kd> kernel debugging
+* 0:000>: means target zero and thread zero.
+* kd>: kernel debugging
 
 ## Memory Interpretation
 * When a memory dump displays question marks, the address is not accessible since the memory is not mapped on the address or belongs to kernel.
