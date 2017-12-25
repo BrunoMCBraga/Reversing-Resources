@@ -1,12 +1,12 @@
 # General Notes
 
-## Types of commands
+## Types of Commands
 
 * Session commands : e.g. kb
 * Meta commands: e.g. .load
 * Extension commands: !analyze, !dumpheap
 
-## Prompt meaning
+## Prompt Meaning
 
 * 0:000>: means target zero and thread zero.
 * kd>: kernel debugging
@@ -28,7 +28,7 @@
 
 More cases can be found on "Magic debug values" on: https://en.wikipedia.org/wiki/Magic_number_(programming)
 
-## Address ranges
+## Address Ranges
 
 ## Evaluating Expressions
 ?: evaluate expression (e.g. ? $thread gives the address of TEB (user mode)/ETHREAD (kernel mode))
@@ -40,7 +40,7 @@ More cases can be found on "Magic debug values" on: https://en.wikipedia.org/wik
 * ?: command help
 * .help: meta-command help
 
-## Getting addresses for relevant structures
+## Getting Addresses for Relevant Structures
 * ? $peb: prints address of PEB
 * !peb: show PEB
 * ? $teb: same for TEB
@@ -60,7 +60,7 @@ More cases can be found on "Magic debug values" on: https://en.wikipedia.org/wik
 * !address [address]: memory map. Address is optional but if provided prints a summary about the address (e.g. range, permissions).
 
 
-## Memory reading/manipulation
+## Memory Reading/Manipulation
 * dds/dps/dqs [address_range]: display words and symbols referenced within the provided address_range.
 * d/da/db... [address_range] : displays memory content within range. Typical usage: da (ascii strings), du (unicode strings) 
 * dda/ddp/ddu [address_range]: symilar to the previous one but it will expect the memory to have a pointer to data. The pointer will be displayed and so will be the data.
@@ -113,7 +113,7 @@ Threads can be identified as such:
   - s can be preprended to the last two identifers to switch contexts. This is useful if you want to inspect the state of other threads.
 **
 
-## Configuring symbols:
+## Configuring Symbols:
 1. On WinDbg go to File->Symbol File Path...
 2. Paste srv*c:\MyServerSymbols*https://msdl.microsoft.com/download/symbols. The \*c:\MyServerSymbols\* represents the path were the downloaded symbols will be saved.
 3. Use the extension command \*.reload -f\* to force all the symbols to be loaded. If the binary dynamically loads dlls later and if you suspect the symbols are not being identified, use the command again.
