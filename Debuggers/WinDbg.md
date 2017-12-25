@@ -59,7 +59,6 @@ Some examples:
 * !teb: shows TEB
 * ? $proc: same for _EPROCESS
 
-
 ## Reckon
 * lm: list modules
 * !lmi [module_name]: more information about module. 
@@ -71,6 +70,13 @@ Some examples:
 * dv [pattern]: displays local variables with a given pattern. Useful when symbols are present. 
 * !address [address]: memory map. Address is optional but if provided prints a summary about the address (e.g. range, permissions).
 
+## Stack (~thread_number allows you to choose the thread)
+* k (and variants) : displays stack backtrace. The stack trace includes the base pointer for the stack frame (i.e. ebp for each function), the return address, and function names.
+
+## Registers (~thread_number allows you to choose the thread)
+* r: registers information.
+* r [register]=[value]: sets register value.
+* r [register]: print register value
 
 ## Memory Reading/Manipulation
 * dds/dps/dqs [address_range]: display words and symbols referenced within the provided address_range.
@@ -85,14 +91,6 @@ Some examples:
 * u(b) [address/address_range]: disassembles a couple of instructions starting at the providded address. The b dictates that it should start disassembling back instead of forth.
 * u [start_address] [end_address]: disassembles instructions between the provided addresses
 * uf [address/address_range]: disassembly function. It parses the assembly and adds clickable links when you have branches. 
-
-## Stack (~thread_number allows you to choose the thread)
-* k (and variants) : displays stack backtrace. The stack trace includes the base pointer for the stack frame (i.e. ebp for each function), the return address, and function names.
-
-## Registers (~thread_number allows you to choose the thread)
-* r: registers information.
-* r [register]=[value]: sets register value.
-* r [register]: print register value
 
 ## Breakpoints  (~thread_number allows you to choose the thread)
 * bp [address]: software breakpoint at address
