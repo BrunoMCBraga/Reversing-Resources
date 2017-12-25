@@ -51,7 +51,7 @@
 * dds/dps/dqs [address_range]: display words and symbols referenced within the provided address_range.
 * d/da/db... [address_range] : displays memory content within range. Typical usage: da (ascii strings), du (unicode strings) 
 * dda/ddp/ddu [address_range]: symilar to the previous one but it will expect the memory to have a pointer to data. The pointer will be displayed and so will be the data.
-* ? poi([address]): roughly speaking, reads a pointer from the address. Say you know a given address contains a pointer to something. You could use dd or simply this. This could be useful to combine with another command like *u* (e.g. u poi(address)). *NOTE:the address does not have to have a pointer there. It can be anything* 
+* ? poi([address]): roughly speaking, reads a pointer from the address. Say you know a given address contains a pointer to something. You could use dd or simply this. This could be useful to combine with another command like *u* (e.g. u poi(address)). **NOTE: the address does not have to have a pointer there. It can be anything** 
 * s [address_range]  [pattern]: search memory for pattern.
 * e/ea/eb/ed [address] [data]: modify memory (e.g. eza [address] "Hello World!" will write a null-terminated ASCII string to [address]).
 * .writemem [file_path] [address_range]: dumps memory within address_range to a file.
@@ -85,7 +85,7 @@
 * pc:executes until a call is reached.
 * wt: trace and watch changes. Good to understand what happens during the execution of the function.
 
-*Note: Both breakpoints and stepping commands can be combined with WinDbg commands. You can set a break point after a function responsible for dynamic resolution of library functions as such: bp [function_address] "ln eax". This will print the symbol at the resolved address verytime the function is executed.* 
+**Note: Both breakpoints and stepping commands can be combined with WinDbg commands. You can set a break point after a function responsible for dynamic resolution of library functions as such: bp [function_address] "ln eax". This will print the symbol at the resolved address verytime the function is executed.**
 
 ## Threads
 Threads can be identified as such:
@@ -95,10 +95,10 @@ Threads can be identified as such:
 * ~[ordinal]: thread with given ordinal. 
 * \~\~[TID]: thread with given id.
 
-*Notes: 
+**Notes: 
   - These identifiers can be used standalone or prepended to others like breakpoints and stepping to identify which thread should be afected.
   - s can be preprended to the last two identifers to switch contexts. This is useful if you want to inspect the state of other threads.
-*
+**
 
 ## Configuring symbols:
 1. On WinDbg go to File->Symbol File Path...
