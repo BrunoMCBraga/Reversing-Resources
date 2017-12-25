@@ -20,7 +20,7 @@
 
 ## Reckon
 * lm: list modules
-* x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as **whatever** The modules can be found using lm.  
+* x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as \**word*\* The modules can be found using lm.  
 * ln [address] (list near): lists symbols at or close to the address.  
 * dg [fs/gs/ds]: shows information about segment selectors
 
