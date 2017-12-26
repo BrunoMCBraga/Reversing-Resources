@@ -62,7 +62,7 @@ Some examples:
 ## Reckon
 * lm: list modules
 * !lmi [module_name]: more information about module. 
-* !dh [address]: displays header information about module at address.
+* !dh [address]/[module_name]: displays header information about module at address or with name. Useful to find entrypoint.
 * x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as \**word*\*. The modules can be found using lm.  
 * ln [address] (list near): lists symbols at or close to the address.  
 * dg: shows information about segment selectors (e.g. dg ds)
@@ -86,6 +86,7 @@ Some examples:
 * s [address_range]  [pattern]: search memory for pattern.
 * e/ea/eb/ed [address] [data]: modify memory (e.g. eza [address] "Hello World!" will write a null-terminated ASCII string to [address]).
 * .writemem [file_path] [address_range]: dumps memory within address_range to a file.
+* .readmem [file_path] [address_range]: reads file and dumps content into address.
 
 ## Assembly
 * u(b) [address/address_range]: disassembles a couple of instructions starting at the providded address. The b dictates that it should start disassembling back instead of forth.
