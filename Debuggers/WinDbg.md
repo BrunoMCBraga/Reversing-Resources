@@ -87,6 +87,7 @@ Some examples:
 * e/ea/eb/ed [address] [data]: modify memory (e.g. eza [address] "Hello World!" will write a null-terminated ASCII string to [address]).
 * .writemem [file_path] [address_range]: dumps memory within address_range to a file.
 * .readmem [file_path] [address_range]: reads file and dumps content into address.
+* .dvalloc [size]: leverages VirtualAllocEx to allocate extra memory.
 
 ## Assembly
 * u(b) [address/address_range]: disassembles a couple of instructions starting at the providded address. The b dictates that it should start disassembling back instead of forth.
