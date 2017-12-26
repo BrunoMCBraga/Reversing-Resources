@@ -31,6 +31,7 @@
 * is: shows symbols.
 * ii: shows imports.
 * dm: memory map.
+* dd: file descriptors.
 
 ## Stack
 
@@ -93,18 +94,19 @@
 * ds: single step (will step into functions) or just s on VV
 * dso: single step (will skip function calls)
 * dt: step over
-* dcu main-> goes to main
+* dcu/dsu [address/synbol]: runs to/steps to run.
 * dtc [address] ([start_address] - [end_address]): trace range os instructions or just traces to address.
+* (visual mode) s/S: step/step-over.
 
 ## Threads
 dp...
 
 ## Misc
-* dls->clear screen
-* [command] ~[expression]: greps output of command for expression
-* [command] ~something: grips for something on command output
-
-ood?
+* dls: clear screen
+* [command] ~[expression]: greps output of command for expression.
+* [command] ~something: greps for something on command output.
+* [command] | less: self-explanatory.
+* ood: reopen file in debug mode.
 
 
 ## Visual Mode
@@ -115,7 +117,7 @@ ood?
 * :-> opens command prompt. Then i can use something like: CC comment @address
 * _ string->can be used to search for functions and symbols…
 * s [address] and then on visual mode df to create function
-
+* C: toggle colours
 
 
 
