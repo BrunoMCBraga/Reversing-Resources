@@ -22,6 +22,7 @@
 * axt [address]: find references to this address.
 * afu [address]: defines function starting on current address up to address. This is useful if Radare is not spotting a function. 
 * Ps [project_name]: save current project. Projects seem to be similar to IDA idbs. If you add comments, rename functions, create functions, you should see those when loading the project again. The project keeps track of the path for the binary so you can query symbols, entrypoint, etc when the project is loaded.
+* CC [string] @[address]: adds comment at address.
 
 
 ## Reckon
@@ -110,14 +111,12 @@ dp...
 
 
 ## Visual Mode
-* VV->Visual mode
-* p on visual mode->change views. If used on Graph, it alternates between displays. 
-* VV @ address/funct name (from is): graph of function at
-* d->rename current function
-* :-> opens command prompt. Then i can use something like: CC comment @address
-* _ string->can be used to search for functions and symbols…
-* s [address] and then on visual mode df to create function
-* C: toggle colours
+* VV: visual mode (graph mode to be more precise). If **q** is pressed, it will show other non-graph views. If the key is pressed again it returns to command mode.
+* p: change views. If used on graph mode, it alternates between display types. 
+* VV @[address/symbol]: graph of function at.
+* d: rename current function
+* : :opens command prompt. Then a command like **is** can be used.
+* C: toggle colours.
 
 
 
