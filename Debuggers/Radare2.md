@@ -26,6 +26,7 @@
 * ieq: shows entry point.
 * is: shows symbols.
 * ii: shows imports.
+* dm: memory map.
 
 ## Stack
 
@@ -34,21 +35,35 @@
 * dr [register]: shows value of register.
 
 ## Memory Reading/Manipulation
-* y [size] @address->read bytes from memory to buffer
-* yea [file] [copy]
-* yy address->dumps whatever is on the buffer to memory
-* ytf file_name: dump clipboard to file. The file will be on the same folder as the binary.
-* w
-* px @address-> hex dump with ascii
-* w ‘string’ @address-> write string to address
-* /x0x4444 ->search for hex string
-* /w hello -> search for word string?
-* ps @address-> print string at address
-* o file_name->maps file in memory
-* yfa file_name copy: copies all data to memory. Then yy can be used.
-* yf [size] [start_within_file] [file_name]. If size is -1, everything is copied.
+**Notes: 
+    - For memory dumps you can use variants of y (yank) or w commands. The y is more cumbersome but more flexible. It leverages the concept of a yank buffer (or clipboard) which means that in order to write to a file, you need to yank the data to the buffer, and then dump the clipboard to a file.  
+    - When you must pass the path for a file as an argument, you can assume that the current directory is the location of the analysed binary. 
+    - If addresses are not provided, the current offset is assumed.
+**
 
+* y [size] @[address]: read bytes from memory at address to buffer.
+* yfa [file_path] copy: copies the full file to the buffer.
+* yy [address]: dumps whatever is on the buffer to the memory address.
+* ytf [file_path]: dump buffer data to file. 
+* yf [size] [offset_within_file] [file_name]. reads size bytes of data starting at offset_within_file to the buffer. If size is -1, everything is read.
 
+* wz [string] @[address]: write null-terminated ASCII string to address.
+* ww [string] @[address]: write Unicode string to address.
+* wx [hex] @[address]: writes hex to address.
+* wf [file_path]: writes the content of file to current offset.
+* wtf [file_path] [size]: writes the content of memory starting at the current offset to a file.
+
+* px @[address]: prints hex dump starting at address.
+* ps @[address]: prints string at address.
+
+* /x [hex_string]: searches for hex string.
+* /w [string]: search for Unicode string.
+* / [string]: searches for ASCII string.
+
+* dm [address] [size]: allocates size bytes of memory starting at address. If address is -1, it is allocated anywhere.
+
+* o: list opened files.
+* o/on [file_path] [address]: opens and maps file in memory. o is raw while on can be used for binaries. 
 
 
 ## Assembly
