@@ -108,7 +108,7 @@ Some examples:
 * t: step into, i.e., functions are iterated and not skipped as with the next command.
 * p: single step as t but routines are skipped.
 * pc:executes until a call is reached.
-* wt: trace and watch changes. Good to understand what happens during the execution of the function.
+* wt [start_address] [end_address]: trace and watch changes. Good to understand what happens during the execution of the function.
 
 **Note: Both breakpoints and stepping commands can be combined with WinDbg commands. You can set a break point after a function responsible for dynamic resolution of library functions as such: bp [function_address] "ln eax". This will print the symbol at the resolved address verytime the function is executed.**
 
