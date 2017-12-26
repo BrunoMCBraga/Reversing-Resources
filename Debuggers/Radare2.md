@@ -11,7 +11,7 @@
 * The prompt **[address]>** indicates where you are. If you are doing static analysis, everytime you use **s (seek)** this address will change to the sought address. On debug mode, using the seek command will not change the EIP for the current offset and the EIP may be the same but not always. 
 
 ## Starting
-* r2 [file]: opens file (similar to IDA)
+* r2 [file_path]: opens file (similar to IDA)
 * r2 -w [file_path]: opens file in write mode. Useful for patching.
 * r2 -d [binary_path]: start debugging.
 * r2 -p [project_name]: loads previously saved project. This is similar to IDA loading idb.
