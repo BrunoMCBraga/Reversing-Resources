@@ -10,6 +10,12 @@
 * If addresses/offsets are not provided for most instructions, the current offset is assumed.
 * The prompt **[address]>** indicates where you are. If you are doing static analysis, everytime you use **s (seek)** this address will change to the sought address. On debug mode, using the seek command will not change the EIP for the current offset and the EIP may be the same but not always. 
 
+### Internal Configuration Variables
+Radare has a huge list of configurable variables. The following commands may prove useful:
+* e??: list all variables.
+* e??[expression]: search for configurations starting with expression (e.g. e?? dbg will show all the variables within dbg).
+* e [variable]=[value]: sets variable (e.g. **e dbg.forks=true** will stop execution if fork is called). 
+
 ## Starting
 * r2 [file_path]: opens file (similar to IDA)
 * r2 -w [file_path]: opens file in write mode. Useful for patching.
@@ -99,8 +105,10 @@
 * dtc [address] ([start_address] - [end_address]): trace range os instructions or just traces to address.
 * (visual mode) s/S: step/step-over.
 
-## Threads
-dp...
+## Processes and Threads
+* dp: list pid and children.
+* dpt: list threads.
+* dpt=[thread_id]: attach to thread.
 
 ## Misc
 * dls: clear screen
