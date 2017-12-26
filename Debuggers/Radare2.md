@@ -40,8 +40,6 @@ Radare has a huge list of configurable variables. The following commands may pro
 * dm: memory map.
 * dd: file descriptors.
 
-## Stack
-
 ## Registers
 * dr [register]=[new_value]: sets register value.
 * dr [register]: shows value of register.
