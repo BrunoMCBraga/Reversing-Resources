@@ -32,7 +32,7 @@ Radare has a huge list of configurable variables. The following commands may pro
 
 
 ## Reckon
-* aaaa: analyse binary. Useful to see references and leverange function graphs.
+* aaaa: performs deep analysis of the binary. Useful to later see references and leverage function graphs.
 * dmm: list modules
 * ieq: shows entry point.
 * is: shows symbols.
