@@ -6,6 +6,10 @@
 
 # R2
 
+## General Notes
+* If addresses/offsets are not provided for most instructions, the current offset is assumed.
+* The prompt **[address]>** indicates where you are. If you are doing static analysis, everytime you use **s (seek)** this address will change to the sought address. On debug mode, using the seek command will not change the EIP for the current offset and the EIP may be the same but not always. 
+
 ## Starting
 * r2 [file]: opens file (similar to IDA)
 * r2 -w [file_path]: opens file in write mode. Useful for patching.
@@ -37,8 +41,7 @@
 ## Memory Reading/Manipulation
 **Notes: 
     - For memory dumps you can use variants of y (yank) or w commands. The y is more cumbersome but more flexible. It leverages the concept of a yank buffer (or clipboard) which means that in order to write to a file, you need to yank the data to the buffer, and then dump the clipboard to a file.  
-    - When you must pass the path for a file as an argument, you can assume that the current directory is the location of the analysed binary. 
-    - If addresses are not provided, the current offset is assumed.**
+    - When you must pass the path for a file as an argument, you can assume that the current directory is the location of the analysed binary.**
 
 ### Yanking 
 * y [size] @[address]: read bytes from memory at address to buffer.
@@ -70,21 +73,31 @@
 
 
 ## Assembly
-* pd/D @address-> disassemble N opcodes/bytes
-
+* pd/D [-][size] @[address]: disassemble size instructions/bytes. The minus can be used to print backwards from address.
+* pdfs @[address]: prints information about function (section, symbols, calls, jumps).
 
 ## Breakpoints
-* db->set breakpoint
+* db: list software breakpoints.
+* db [address/symbol_name]: set software breakpoint.
+* db -[address/symbol_name]: remove software breakpoint.
+* dbi: list breakpoint indexex.
+* dbid [index]: disable breakpoint by index.
+* dbc [address/symbol_name] [cmd]/dbic [index]: run command at breakpoint address/index.
+* dbw [addr] [rwx]: sets hardware breakpoint at address. 
+* drx: list hardware breakpoints.
+* drx [index] [address] [length] [rwx]: changes defined breakpoint. The indexes are obtained based on the CPU register used. The length can be 1,2,4 or 8 bytes.
 
 
 ## Stepping
-* dc -> go
-* ds->single step (into) or just s on VV
-* dt->step over
+* dc: go
+* ds: single step (will step into functions) or just s on VV
+* dso: single step (will skip function calls)
+* dt: step over
 * dcu main-> goes to main
-
+* dtc [address] ([start_address] - [end_address]): trace range os instructions or just traces to address.
 
 ## Threads
+dp...
 
 ## Misc
 * dls->clear screen
