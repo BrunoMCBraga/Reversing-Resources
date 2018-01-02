@@ -6,8 +6,8 @@
 
 
 ## Reckon
-info sharedlibrary: show loaded modules.
-info threads: show threads
+* info sharedlibrary: show loaded modules.
+* info threads: show threads
 
 ## Registers
 * i r: print registers
