@@ -9,7 +9,8 @@
 
 
 ## Registers
-
+i r: print registers
+set $[REGISTER NAME]=[VALUE]
 
 ## Memory Reading/Manipulation
 
@@ -29,12 +30,19 @@
 
 
 ## Assembly
-
+disassemble [ADDRESS], [OFFSET]: disassembles between addresses.
 
 ## Breakpoints
-
+break \*[ADDRESS]
+delete \*[ADDRESS]
+i b: list breakpoints
 
 ## Stepping
+run: run the program
+c: continue execution
+step: step into
+next: step over
+
 
 
 ## Processes and Threads
