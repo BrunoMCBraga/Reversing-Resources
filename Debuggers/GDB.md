@@ -22,7 +22,7 @@
 
 ### Printing
 * x/nfu [ADDRESS]: prints memory. n dictates the number of units, f is the format character, u is the unit (e.g. b, h, w, g). As an example, **x/1sb [ADDRESS]** prints string at address.
-
+* print \*(char\*\*)[ADDRESS]: prints string at address.
 ### Searching
 
 
