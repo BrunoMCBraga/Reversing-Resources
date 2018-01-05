@@ -49,7 +49,7 @@
 
 
 ## Processes and Threads
-
+* set scheduler-locking on: full locking (no thread except the current thread may run)
 
 ## Misc
 * start: breaks at main.
