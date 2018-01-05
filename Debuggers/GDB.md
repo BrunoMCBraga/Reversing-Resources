@@ -41,8 +41,8 @@
 ## Stepping
 * run: run the program
 * c: continue execution
-* step: step into
-* next: step over
+* si: step into using instruction granularity. step can be used to step using source code lines as granularity.
+* ni: step over using instruction granularity. next can be used to step using source code lines as granularity.
 
 
 
