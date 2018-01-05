@@ -1,6 +1,6 @@
 ## General Notes
 * GDB instructions support a shoort representation format. Assuming **info sharedlibary**, we can write **i s**.
-
+* If a thread id is not specified on **break**, all threads are subject to the breakpoints.
 
 
 
