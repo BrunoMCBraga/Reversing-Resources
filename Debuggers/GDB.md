@@ -35,7 +35,7 @@
 
 ## Breakpoints
 * break \*[ADDRESS]
-* delete \*[ADDRESS]
+* delete [BREAKPOINT NUMBER]
 * i b: list breakpoints
 
 ## Stepping
