@@ -58,7 +58,7 @@
 * gdb -tui [BINARY FILE PATH]: start GDB in TUI mode.
 * (in GDB): ctrl+x, ctrl+a: enable TUI mode.
 * set disassembly-flavor intel: changes assembly representation to INTEL's.
-
+* info frame: information about current stack frame.
 
 
 
