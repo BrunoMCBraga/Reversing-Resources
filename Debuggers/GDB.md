@@ -40,6 +40,7 @@
 * delete breakpoints [BREAKPOINT NUMBER]
 * delete breakpoints: deletes all breakpoints
 * i b: list breakpoints
+* watch/rwatch/awatch \*[ADDRESS]: data breakpoints for write/read/both.
 
 ## Stepping
 * run: run the program
