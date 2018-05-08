@@ -8,6 +8,7 @@
 ## Reckon
 * info sharedlibrary: show loaded modules.
 * info threads: show threads
+* info file: show entrypoint
 
 ## Registers
 * i r: print registers
