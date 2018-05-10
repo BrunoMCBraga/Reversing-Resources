@@ -13,6 +13,7 @@
 ## Registers
 * i r: print registers
 * set $[REGISTER NAME]=[VALUE]
+* set {char[[SIZE]]}[ADDRESS]="" : sets a range of bytes starting on ADDRESS to zero.
 
 ## Memory Reading/Manipulation
 
@@ -61,7 +62,7 @@
 * (in GDB): ctrl+x, ctrl+a: enable TUI mode.
 * set disassembly-flavor intel: changes assembly representation to INTEL's.
 * info frame: information about current stack frame.
-
+* set print elements [SIZE]: by default, print truncates large strings. This relaxes that.
 
 
 
