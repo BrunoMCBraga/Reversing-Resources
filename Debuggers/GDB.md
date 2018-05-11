@@ -43,10 +43,10 @@
 * delete breakpoints: deletes all breakpoints
 * i b: list breakpoints
 * watch/rwatch/awatch \*[ADDRESS]: data breakpoints for write/read/both.
-* break [ADDRESS]: The chain of commands can be used to execute GDB commands when a breakpoint is hit. 
-  commands
-  [GRB_COMMANDS]
-  end
+* break [ADDRESS]: The chain of commands until end can be used to execute GDB commands when a breakpoint is hit. 
+* commands
+* [GRB_COMMANDS]
+* end
   
 ## Stepping
 * run: run the program
