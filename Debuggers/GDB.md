@@ -1,9 +1,10 @@
 ## General Notes
 * GDB instructions support a shoort representation format. Assuming **info sharedlibary**, we can write **i s**.
 * If a thread id is not specified on **break**, all threads are subject to the breakpoints.
-
-
-
+* In order to stop at entrypoint do:
+  * info files
+  * b \*0x[ENTRY_POINT]
+  * run
 
 ## Reckon
 * info sharedlibrary: show loaded modules.
