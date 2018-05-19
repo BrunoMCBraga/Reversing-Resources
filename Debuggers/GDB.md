@@ -68,7 +68,8 @@
 * set disassembly-flavor intel: changes assembly representation to INTEL's.
 * info frame: information about current stack frame.
 * set print elements [SIZE]: by default, print truncates large strings. This relaxes that.
-* set follow-fork-mode child: the debugger will attach to a forked process
+* set follow-fork-mode [child/parent/ask]: the debugger will attach to a forked process, the parent or it will ask you
+* info inferior: get pid
 
 
 
