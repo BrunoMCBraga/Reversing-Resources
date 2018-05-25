@@ -32,6 +32,7 @@ More cases can be found under the "Magic debug values" section on: https://en.wi
 There is a whole page dedicated to this topic here: https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/address-and-address-range-syntax. However, i tend to rely on:
 * Explicit: u [first_address] [last_address]-> disassembles whatever is between the aforementioned addresses.
 * Implicit: dd [address] L[number_of_units]-> prints number_of_units dwords starting at address. If i used db, you would get the same number of units but bytes, not words (dd understands dwords while db understands bytes).
+**Note: Sometimes the L will not work for ranges that are too large. Use L?**
 
 ## Evaluating Expressions
 WinDbg is capable of interpreting expressions as well as interpreting data in memory as C++ objects:
