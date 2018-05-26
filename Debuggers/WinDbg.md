@@ -96,7 +96,7 @@ Some examples:
 * uf [address/address_range]: disassembly function. It parses the assembly and adds clickable links when you have branches. 
 
 ## Breakpoints  (~thread_number allows you to choose the thread)
-* bp [address]: software breakpoint at address
+* bp [address] "[COMMAND]": software breakpoint at address and executed command
 * bu [module_name]![symbol_name] (unresolved breakpoint): breakpoint is not associated with memory but with a symbol that, when loaded and resolved will hold an address. Useful when we know a binary will load a dll and call a function later on.
 * bm [module_name]![symbol_name]: similar to bu but assumes the symbol is resolved and the module loaded.
 * ba [address] (break on access): sets data/hardware breakpoint.     
