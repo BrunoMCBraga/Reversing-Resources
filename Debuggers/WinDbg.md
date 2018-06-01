@@ -89,6 +89,7 @@ Some examples:
 * .writemem [file_path] [address_range]: dumps memory within address_range to a file.
 * .readmem [file_path] [address_range]: reads file and dumps content into address.
 * .dvalloc [size]: leverages VirtualAllocEx to allocate extra memory.
+* s [STARTING_ADDRESS] L?[LENGTH]/[END_ADDRESS] [PATTERN]: search for pattern in memory. PATTERN can be a sequence of bytes.
 
 ## Assembly
 * u(b) [address/address_range]: disassembles a couple of instructions starting at the providded address. The b dictates that it should start disassembling back instead of forth.
