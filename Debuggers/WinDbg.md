@@ -94,7 +94,7 @@ Some examples:
 ## Assembly
 * u(b) [address/address_range]: disassembles a couple of instructions starting at the providded address. The b dictates that it should start disassembling back instead of forth.
 * u [start_address] [end_address]: disassembles instructions between the provided addresses
-* uf [address/address_range]: disassembly function. It parses the assembly and adds clickable links when you have branches. 
+* uf [address/address_range/symbol_name]: disassembly function. It parses the assembly and adds clickable links when you have branches. 
 
 ## Breakpoints  (~thread_number allows you to choose the thread)
 * bp [address] "[COMMAND]": software breakpoint at address and executed command
