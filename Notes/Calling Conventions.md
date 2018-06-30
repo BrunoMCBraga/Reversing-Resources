@@ -30,7 +30,7 @@
 - Return value: EAX
 - Non-volatile registers (saved by callee): EBP, ESP, EBX, ESI, EDI
 
-
+**Note: In general, the registers EAX, ECX and EDX should be saved by the caller.**
 
 # x86-64
 
@@ -49,4 +49,4 @@
 
 
 
-**Note: In general, the registers EAX, ECX and EDX should be saved by the caller.**
+
