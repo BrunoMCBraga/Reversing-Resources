@@ -12,7 +12,7 @@ Add information here later!!!!
 
 #  What are model-specific registers?
 These registers are CPU-specific and are indexed using a 32-bit integer and read/written through RDMSR/WRMSR instructions. They are only accessible on ring 0. 
-SYSENTER transfers execution to the address stored in MSR 0x176 (IA32_SYSENTER_EIP) which is set by the OS and contains the handler for system calls. As for SYSCALL, RIP is set to MSR 0x82 (IA32_LSTAR_MSR) is used.
+SYSENTER transfers execution to the address stored in MSR 0x176 (IA32_SYSENTER_EIP) which is set by the OS and contains the handler for system calls. As for SYSCALL, RIP is set to MSR 0x82 (IA32_LSTAR_MSR) is used. These values are set by the kernel when the processors are initialized.
 
 # What is the usage of segment registers:
 - FS\[0\] points to PCR (from kernel-mode for each processor x86)
