@@ -1,7 +1,7 @@
 # Which control registers exist and what are the usages?
 - CR0: controls things like paging, mode (protected vs. real)
 - CR2: containes the address that caused a page fault
-- CR3: upper 20 bits address the first table used as a starting point to translate virtual into physical addresses. Every process has a different CR3 which is the same as the DirBase field obtained from *!process 0 0 (WinDbg)*
+- CR3: upper 20 bits address the first table used as a starting point to translate virtual into physical addresses. Every process has a different CR3 which is the same as the DirBase field obtained from **!process 0 0 (WinDbg)**
 - CR4: controls PAE, Virtual Machine Extensions, etc
 
 #  Which debug resisters exist and what are the usages?
