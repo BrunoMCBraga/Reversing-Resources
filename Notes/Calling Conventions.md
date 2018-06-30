@@ -44,7 +44,7 @@
 ## System V AMD64 ABI
 - Arguments: RDI, RSI, RDX, RCX, R8, R9, XMM0–7. 
 - Cleaner: caller 
-- Return value: 
+- Return value: RAX for up to 64 bits, RAX, RDX for up to 128 bits, XMM0 and XMM1 for floats 
 - Non-volatile registers (saved by callee): RBX, RBP, RSP, R12, R13, R14, R15
 
 
