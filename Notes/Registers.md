@@ -11,5 +11,5 @@
 Add information here later!!!!
 
 #  What are model-specific registers?
-These registers are CPU-specific and are indexed using a 32-bit integer and read/written through RDMSR/WRMSR instructins. They are only accessible on ring 0. 
+These registers are CPU-specific and are indexed using a 32-bit integer and read/written through RDMSR/WRMSR instructions. They are only accessible on ring 0. 
 SYSENTER transfers execution to the address stored in MSR 0x176 (IA32_SYSENTER_EIP) which is set by the OS and contains the handler for system calls. 
