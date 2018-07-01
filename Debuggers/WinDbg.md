@@ -140,5 +140,10 @@ Threads can be identified as such:
 * !exchain: prints current exception chain.
 * !slist, !list: list iteration.
 
+
+## Kernel Debugging
+!idt : dump IDT
+
 # Resources
 * http://windbg.info/doc/1-common-cmds.html#14_tracing
+
