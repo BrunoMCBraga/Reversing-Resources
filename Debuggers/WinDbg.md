@@ -216,9 +216,15 @@ Bsides the usual t, g, etc, you can try to move with "managed breakpoint". Once 
 
 Based on this, by inspecting methods using WinDbg and DNSpy, you can then select where to land and speed up the analysis.
 
-### Inspect Threads, Objects
+### Inspect Threads, Objects, Heap
 * !threads: shows managed threads.
 * !do [ADDRESS]: inspect object at address (i.e. prints fields) 
+* !dumpheap -type System.String -short: prints all addresses of strings. You can then click on each of them to get the data.  
+
+Dumping strings to file:
+1. .logopen [PATH_TO_LOG]
+2. .foreach (address {!dumpheap -type System.String -short}) {!dumpobj -nofields address}
+3. .logclose
 
 ### QUESTIONS
 - Breaking on constructor??
@@ -227,4 +233,5 @@ Based on this, by inspecting methods using WinDbg and DNSpy, you can then select
 * http://windbg.info/doc/1-common-cmds.html#14_tracing
 * https://github.com/lowleveldesign/debug-recipes/blob/master/debugging-using-windbg/sos.help.txt
 * https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugging-managed-code
+* https://github.com/dotnet/coreclr/blob/master/src/ToolBox/SOS/Strike/sosdocs.txt
 
