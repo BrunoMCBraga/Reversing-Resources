@@ -152,15 +152,54 @@ Threads can be identified as such:
 
 At this point, the necessary modules are loaded.
 
+### Help
+* !SOS.help: shows SOS commands
+* !SOS.help ![COMMAND]: shows inofrmation about commands (e.g. !SOS.help !bpmd)
+
+### Assemblies, Modules, Methods
+* !dumpdomain: shows information about loaded assemblies and module descriptors.
+* !dumpassembly [ASSEMBLY_DESCRIPTOR]: does not add more information when compared to previous command but it is more targetted to assembly.
+* !dumpmodule -mt [MODULE_DESCRIPTOR]: based on [MODULE_DESCRIPTOR] obtained from previous command. Lists types defined and referenced.
+* !dumpmt -md [METHOD_TABLE]: Based on the descriptors under MT you can list methods. From those you can get the descriptors. 
+
+
 ### Landing on main and inspecting IL
 1. !clrstack: if you ran g once, you will likely see at the top of the stack: ... [MODULE].Main(System.String[]). Copy [MODULE].Main(System.String[]).
 2. !name2ee [MODULE].Main(System.String[]): This will show you some fields like: Module, Assembly, MethodDesc and a message: "Not JITTED yet. Use !bpmd -md [MethodDesc] to break on run". This means the method is not compiled to native code yet.
-3. !bpmd -md [MethodDesc]: Sets a managed breakpoint based on method descriptor.
+3. !bpmd -md [MethodDesc]: Sets a breakpoint based on method descriptor.
 4. g: runs until the breakpoint is hit
+
+**Note: After i wrote the instructions above i inspected the help docs using !sos.help for !bpmd and found:
+
+This brings up a good question: "I want to set a breakpoint on the main
+method of my application. How can I do this?"
+
+  1) If you know the full path to SOS, use this command and skip to step 6
+       .load <the full path to sos.dll>
+
+  2) If you don't know the full path to sos, its usually next to clr.dll
+     You can wait for clr to load and then find it.
+     Start the debugger and type: 
+       sxe -c "" clrn
+  3) g
+  4) You'll get the following notification from the debugger:
+     "CLR notification: module 'mscorlib' loaded"
+  5) Now you can load SOS. Type
+       .loadby sos clr
+
+  6) Add the breakpoint with command such as:
+       !bpmd myapp.exe MyApp.Main
+  7) g
+  8) You will stop at the start of MyApp.Main. If you type "bl" you will 
+     see the breakpoint listed.
+
+
+
+**
 
 Now we inspect IL:
 1. !ip2md [INSTRUCTION_POINTER]: converts instruction pointer to method descriptor. Not needed if you still have it from previous commands.
-2. !dumpil [METHOD_DESCRIPTOR]: dumps il for method.  
+2. !dumpil [METHOD_DESCRIPTOR]: dumps il for method based on descriptor.  
 Optionally, you can run !u [ASSEMBLY_ADDRESS] and you will see the disassembly that is more verbose (e.g. string references are dereferenced so you can see them, .NET methods are shown like System.Console.WriteLine(System.String))
 
 
@@ -171,6 +210,12 @@ Optionally, you can run !u [ASSEMBLY_ADDRESS] and you will see the disassembly t
 Assuming an array:
 1. !dumparray /d [ARRAY_DESCRIPTOR]: where [ARRAY_DESCRIPTOR] is obtained from !dumpobj. This will show you for each index the descriptor for the object.
 2. !dumpobj /d [OBJECT_DESCRIPTOR]: where [OBJECT_DESCRIPTOR] can be obtained from the previous command. This command can be used to dump content of objects (e.g. string).
+
+### Navigating code
+Bsides the usual t, g, etc, you can try to move with "managed breakpoint". 
+
+### Inspect Threads
+!threads: shows managed threads.
 
 # Resources
 * http://windbg.info/doc/1-common-cmds.html#14_tracing
