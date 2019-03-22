@@ -219,6 +219,9 @@ Based on this, by inspecting methods using WinDbg and DNSpy, you can then select
 ### Inspect Threads
 !threads: shows managed threads.
 
+### QUESTIONS
+- Breaking on constructor??
+
 # Resources
 * http://windbg.info/doc/1-common-cmds.html#14_tracing
 * https://github.com/lowleveldesign/debug-recipes/blob/master/debugging-using-windbg/sos.help.txt
