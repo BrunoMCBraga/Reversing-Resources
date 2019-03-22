@@ -216,8 +216,9 @@ Bsides the usual t, g, etc, you can try to move with "managed breakpoint". Once 
 
 Based on this, by inspecting methods using WinDbg and DNSpy, you can then select where to land and speed up the analysis.
 
-### Inspect Threads
-!threads: shows managed threads.
+### Inspect Threads, Objects
+* !threads: shows managed threads.
+* !do [ADDRESS]: inspect object at address (i.e. prints fields) 
 
 ### QUESTIONS
 - Breaking on constructor??
