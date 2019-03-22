@@ -169,8 +169,9 @@ At this point, the necessary modules are loaded.
 3. !bpmd -md [MethodDesc]: Sets a breakpoint based on method descriptor.
 4. g: runs until the breakpoint is hit
 
-**Note: After i wrote the instructions above i inspected the help docs using !sos.help for !bpmd and found:
+**Note: After i wrote the instructions above i inspected the help docs using !sos.help for !bpmd and found:***
 
+```
 This brings up a good question: "I want to set a breakpoint on the main
 method of my application. How can I do this?"
 
@@ -193,9 +194,7 @@ method of my application. How can I do this?"
   8) You will stop at the start of MyApp.Main. If you type "bl" you will 
      see the breakpoint listed.
 
-
-
-**
+```
 
 Now we inspect IL:
 1. !ip2md [INSTRUCTION_POINTER]: converts instruction pointer to method descriptor. Not needed if you still have it from previous commands.
@@ -212,7 +211,10 @@ Assuming an array:
 2. !dumpobj /d [OBJECT_DESCRIPTOR]: where [OBJECT_DESCRIPTOR] can be obtained from the previous command. This command can be used to dump content of objects (e.g. string).
 
 ### Navigating code
-Bsides the usual t, g, etc, you can try to move with "managed breakpoint". 
+Bsides the usual t, g, etc, you can try to move with "managed breakpoint". Once you run !dumpil you will see offsets on the left of each IL line. You can then use !bpmd as so:
+* !bpmd [MODULE_NAME] [METHOD_NAME] [IL_OFFSET]: where module name can be obtained from lm, method name can be simply [TYPE].[METHOD] (no argument signature needed) and il offset is not e.g. IL_001d bu 001d.
+
+Based on this, by inspecting methods using WinDbg and DNSpy, you can then select where to land and speed up the analysis.
 
 ### Inspect Threads
 !threads: shows managed threads.
