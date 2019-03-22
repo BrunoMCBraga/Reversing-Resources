@@ -144,6 +144,36 @@ Threads can be identified as such:
 ## Kernel Debugging
 !idt : dump IDT
 
+## .NET Debugging (.NET 4.0)
+### Preparation
+1. Breaking on clrjit load: sxe ld:clrjit
+2. Run with g
+3. .cordll -ve -u -l (.loadby sos clr if something fails) 
+
+At this point, the necessary modules are loaded.
+
+### Landing on main and inspecting IL
+1. !clrstack: if you ran g once, you will likely see at the top of the stack: ... [MODULE].Main(System.String[]). Copy [MODULE].Main(System.String[]).
+2. !name2ee [MODULE].Main(System.String[]): This will show you some fields like: Module, Assembly, MethodDesc and a message: "Not JITTED yet. Use !bpmd -md [MethodDesc] to break on run". This means the method is not compiled to native code yet.
+3. !bpmd -md [MethodDesc]: Sets a managed breakpoint based on method descriptor.
+4. g: runs until the breakpoint is hit
+
+Now we inspect IL:
+1. !ip2md [INSTRUCTION_POINTER]: converts instruction pointer to method descriptor. Not needed if you still have it from previous commands.
+2. !dumpil [METHOD_DESCRIPTOR]: dumps il for method.  
+Optionally, you can run !u [ASSEMBLY_ADDRESS] and you will see the disassembly that is more verbose (e.g. string references are dereferenced so you can see them, .NET methods are shown like System.Console.WriteLine(System.String))
+
+
+### Once inside function
+* !clrstack -a: adds parameters and locals to output of !clrstack. 
+* !dumpobj /d [PARAMETER_DESCRIPTOR]: prints information about object, e.g. the parameter.
+
+Assuming an array:
+1. !dumparray /d [ARRAY_DESCRIPTOR]: where [ARRAY_DESCRIPTOR] is obtained from !dumpobj. This will show you for each index the descriptor for the object.
+2. !dumpobj /d [OBJECT_DESCRIPTOR]: where [OBJECT_DESCRIPTOR] can be obtained from the previous command. This command can be used to dump content of objects (e.g. string).
+
 # Resources
 * http://windbg.info/doc/1-common-cmds.html#14_tracing
+* https://github.com/lowleveldesign/debug-recipes/blob/master/debugging-using-windbg/sos.help.txt
+* https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/debugging-managed-code
 
