@@ -146,7 +146,7 @@ Threads can be identified as such:
 
 ## .NET Debugging (.NET 4.0)
 ### Preparation
-1. Breaking on clrjit load: sxe ld:clrjit
+1. Breaking on clrjit load: sxe ld:clrjit clr (clr is optional sometimes)
 2. Run with g
 3. .cordll -ve -u -l (.loadby sos clr if something fails) 
 
