@@ -67,7 +67,7 @@ Some examples:
 * x [module_name]![symbol_name]: search for symbol_name on module with module_name. symbol_name can be a regex such as \**word*\*. The modules can be found using lm. Also, this search is for functions. Check dt. 
 * ln [address] (list near): lists symbols at or close to the address.  
 * dg: shows information about segment selectors (e.g. dg ds)
-* dt [module_name]![type] [address] (display type): can be used to overlap an address with a known structure (e.g. dt nt!_EPROCESS @$proc (using .process). This will align the _EPROCESS struct with the @$proc address). dt can also be used to enumerate structures using a search syntax similar to x.
+* dt [module_name]![type] [address] (display type): you can use this with regexes to search for structures. can be used to overlap an address with a known structure (e.g. dt nt!_EPROCESS @$proc (using .process). This will align the _EPROCESS struct with the @$proc address). dt can also be used to enumerate structures using a search syntax similar to x.
 * dv [pattern]: displays local variables with a given pattern. Useful when symbols are present. 
 * !address [address]: memory map. Address is optional but if provided prints a summary about the address (e.g. range, permissions).
 
